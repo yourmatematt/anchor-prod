@@ -5,7 +5,7 @@
  * Focuses on patterns, risks, and intervention effectiveness
  */
 
-const PatternLearner = require('./pattern-learner');
+import PatternLearner from './pattern-learner.js';
 
 class GuardianInsights {
   constructor(supabaseClient) {
@@ -699,4 +699,4 @@ class GuardianInsights {
   }
 }
 
-module.exports = GuardianInsights;
+export default GuardianInsights;

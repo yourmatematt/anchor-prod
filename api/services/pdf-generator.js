@@ -11,7 +11,7 @@
  * - ATO compliance
  */
 
-const crypto = require('crypto');
+import crypto from 'crypto';
 
 class PDFGenerator {
   constructor() {
@@ -48,7 +48,7 @@ class PDFGenerator {
 
       // In production, would use actual PDF library like PDFKit:
       /*
-      const PDFDocument = require('pdfkit');
+      import PDFDocument from 'pdfkit';
       const doc = new PDFDocument();
 
       // Add metadata
@@ -301,4 +301,4 @@ class PDFGenerator {
   }
 }
 
-module.exports = PDFGenerator;
+export default PDFGenerator;

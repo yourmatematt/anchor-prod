@@ -9,10 +9,10 @@
  * - Get import statistics
  */
 
-const { createClient } = require('@supabase/supabase-js');
-const UpBankHistoryImporter = require('../scripts/import-up-bank-history');
-const GamblingBaselineAnalyzer = require('../scripts/analyze-gambling-baseline');
-const RiskProfileGenerator = require('../scripts/generate-risk-profile');
+import { createClient } from '@supabase/supabase-js';
+import UpBankHistoryImporter from '../scripts/import-up-bank-history.js';
+import GamblingBaselineAnalyzer from '../scripts/analyze-gambling-baseline.js';
+import RiskProfileGenerator from '../scripts/generate-risk-profile.js';
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -291,7 +291,7 @@ async function getRiskProfile(req, res) {
 /**
  * Main handler for Vercel serverless function
  */
-module.exports = async (req, res) => {
+export default async; (req, res) => {
   // Enable CORS
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -331,9 +331,9 @@ module.exports = async (req, res) => {
 };
 
 // Export individual functions for testing
-module.exports.startUpBankImport = startUpBankImport;
-module.exports.getImportStats = getImportStats;
-module.exports.analyzeBaseline = analyzeBaseline;
-module.exports.generateRiskProfile = generateRiskProfile;
-module.exports.getBaseline = getBaseline;
-module.exports.getRiskProfile = getRiskProfile;
+export { startUpBankImport as startUpBankImport };
+export { getImportStats as getImportStats };
+export { analyzeBaseline as analyzeBaseline };
+export { generateRiskProfile as generateRiskProfile };
+export { getBaseline as getBaseline };
+export { getRiskProfile as getRiskProfile };

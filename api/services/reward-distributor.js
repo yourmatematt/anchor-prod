@@ -11,8 +11,8 @@
  * - 365 days: $200 choice reward (flexibility and recognition)
  */
 
-const { createClient } = require('@supabase/supabase-js');
-const { partnerManager } = require('./partner-manager');
+import { createClient } from '@supabase/supabase-js';
+import { partnerManager } from './partner-manager.js';
 
 // Initialize Supabase client
 const supabase = createClient(
@@ -595,7 +595,7 @@ class RewardDistributor {
 // Export singleton instance
 const rewardDistributor = new RewardDistributor();
 
-module.exports = {
+export {
   rewardDistributor,
   RewardDistributor,
   MILESTONES,

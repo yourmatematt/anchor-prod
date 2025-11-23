@@ -9,8 +9,8 @@
  * - Audit trail for decryption
  */
 
-const crypto = require('crypto');
-const auditLogger = require('./audit-logger');
+import crypto from 'crypto';
+import auditLogger from './audit-logger.js';
 
 // Encryption algorithm
 const ALGORITHM = 'aes-256-gcm';
@@ -194,5 +194,7 @@ class EncryptionService {
   }
 }
 
-module.exports = new EncryptionService();
-module.exports.EncryptionService = EncryptionService;
+const encryptionService = new EncryptionService();
+
+export default encryptionService;
+export { EncryptionService };

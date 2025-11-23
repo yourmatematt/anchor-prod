@@ -7,7 +7,7 @@
  * API Integration: Woolworths Partner API (OAuth2 + REST)
  */
 
-const crypto = require('crypto');
+import crypto from 'crypto';
 
 const WOOLWORTHS_CONFIG = {
   apiBaseUrl: process.env.WOOLWORTHS_API_URL || 'https://api.woolworths.com.au/partner/v1',
@@ -379,7 +379,7 @@ async function getReconciliationReport(accessToken, startDate, endDate) {
   };
 }
 
-module.exports = {
+export {
   exchangeOAuthToken,
   refreshOAuthToken,
   issueVoucher,

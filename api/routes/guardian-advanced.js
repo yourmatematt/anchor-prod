@@ -10,8 +10,8 @@
  * - Crisis protocol
  */
 
-const { createClient } = require('@supabase/supabase-js');
-const GuardianInsights = require('../services/guardian-insights');
+import { createClient } from '@supabase/supabase-js';
+import GuardianInsights from '../services/guardian-insights.js';
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -323,7 +323,7 @@ async function getCheckIns(req, res) {
 /**
  * Main handler for Vercel serverless function
  */
-module.exports = async (req, res) => {
+export default async; (req, res) => {
   // Enable CORS
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -366,11 +366,11 @@ module.exports = async (req, res) => {
 };
 
 // Export individual functions for testing
-module.exports.getAnalytics = getAnalytics;
-module.exports.getInterventions = getInterventions;
-module.exports.getQuickMessages = getQuickMessages;
-module.exports.checkCrisisProtocol = checkCrisisProtocol;
-module.exports.getGroupInsights = getGroupInsights;
-module.exports.scheduleCheckIn = scheduleCheckIn;
-module.exports.sendMessage = sendMessage;
-module.exports.getCheckIns = getCheckIns;
+export { getAnalytics as getAnalytics };
+export { getInterventions as getInterventions };
+export { getQuickMessages as getQuickMessages };
+export { checkCrisisProtocol as checkCrisisProtocol };
+export { getGroupInsights as getGroupInsights };
+export { scheduleCheckIn as scheduleCheckIn };
+export { sendMessage as sendMessage };
+export { getCheckIns as getCheckIns };

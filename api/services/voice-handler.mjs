@@ -12,7 +12,7 @@
  */
 
 import Anthropic from '@anthropic-ai/sdk';
-import { getAIResponse } from './ai-conversation.js';
+import { getAIResponse } from './ai-conversation.mjs';
 
 const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,

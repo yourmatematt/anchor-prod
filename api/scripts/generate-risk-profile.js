@@ -18,8 +18,8 @@
  *   node generate-risk-profile.js --months=12
  */
 
-const { createClient } = require('@supabase/supabase-js');
-const PatternLearner = require('../services/pattern-learner');
+import { createClient } from '@supabase/supabase-js';
+import PatternLearner from '../services/pattern-learner.js';
 
 // Configuration
 const SUPABASE_URL = process.env.SUPABASE_URL;
@@ -669,4 +669,4 @@ if (require.main === module) {
   main();
 }
 
-module.exports = RiskProfileGenerator;
+export default RiskProfileGenerator;

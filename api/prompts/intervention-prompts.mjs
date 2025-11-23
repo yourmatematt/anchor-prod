@@ -8,7 +8,7 @@
  * - Maintaining consistent supportive tone
  */
 
-import { TriggerType } from '../services/ai-conversation.js';
+import { TriggerType } from '../services/ai-conversation.mjs';
 
 /**
  * Base personality traits for the AI intervention coach

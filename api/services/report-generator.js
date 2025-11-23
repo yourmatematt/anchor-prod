@@ -17,10 +17,10 @@
  * - Privacy controls
  */
 
-const TaxReport = require('../templates/tax-report');
-const CounselorReport = require('../templates/counselor-report');
-const DebtSummary = require('../templates/debt-summary');
-const PDFGenerator = require('./pdf-generator');
+import TaxReport from '../templates/tax-report.js';
+import CounselorReport from '../templates/counselor-report.js';
+import DebtSummary from '../templates/debt-summary.js';
+import PDFGenerator from './pdf-generator.js';
 
 class ReportGenerator {
   constructor(supabaseClient) {
@@ -798,4 +798,4 @@ class ReportGenerator {
   }
 }
 
-module.exports = ReportGenerator;
+export default ReportGenerator;

@@ -6,7 +6,7 @@
  */
 
 import Anthropic from '@anthropic-ai/sdk';
-import { getInterventionPrompt } from '../prompts/intervention-prompts.js';
+import { getInterventionPrompt } from '../prompts/intervention-prompts.mjs';
 
 const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,

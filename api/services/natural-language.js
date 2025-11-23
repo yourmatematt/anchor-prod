@@ -5,8 +5,8 @@
  * Main entry point for all voice interactions.
  */
 
-const { claudeVoiceService } = require('./claude-voice');
-const { voiceCommandProcessor } = require('./voice-commands');
+import { claudeVoiceService } from './claude-voice.js';
+import { voiceCommandProcessor } from './voice-commands.js';
 
 class NaturalLanguageService {
   /**
@@ -85,7 +85,7 @@ class NaturalLanguageService {
 // Export singleton
 const naturalLanguageService = new NaturalLanguageService();
 
-module.exports = {
+export {
   naturalLanguageService,
   NaturalLanguageService
 };

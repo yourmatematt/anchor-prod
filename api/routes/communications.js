@@ -4,10 +4,10 @@
  * Endpoints for managing communications, preferences, and delivery tracking
  */
 
-const { createClient } = require('@supabase/supabase-js');
-const CommunicationEngine = require('../services/communication-engine');
-const { getPreferences, updatePreferences, unsubscribeAll, resubscribeDefaults, getControllableCategories, getMandatoryCategories } = require('../services/notification-preferences');
-const { handleSendGridWebhook } = require('../services/email-sender');
+import { createClient } from '@supabase/supabase-js';
+import CommunicationEngine from '../services/communication-engine.js';
+import { getPreferences, updatePreferences, unsubscribeAll, resubscribeDefaults, getControllableCategories, getMandatoryCategories } from '../services/notification-preferences.js';
+import { handleSendGridWebhook } from '../services/email-sender.js';
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -310,7 +310,7 @@ async function checkDeliveryStatus(req, res) {
 /**
  * Main handler for Vercel serverless function
  */
-module.exports = async (req, res) => {
+export default async; (req, res) => {
   // Enable CORS
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -355,11 +355,11 @@ module.exports = async (req, res) => {
 };
 
 // Export individual functions for testing
-module.exports.getNotificationPreferences = getNotificationPreferences;
-module.exports.updateNotificationPreferences = updateNotificationPreferences;
-module.exports.unsubscribeFromAll = unsubscribeFromAll;
-module.exports.resubscribeToDefaults = resubscribeToDefaults;
-module.exports.getCommunicationHistory = getCommunicationHistory;
-module.exports.sendTestNotification = sendTestNotification;
-module.exports.handleEmailWebhook = handleEmailWebhook;
-module.exports.checkDeliveryStatus = checkDeliveryStatus;
+export { getNotificationPreferences as getNotificationPreferences };
+export { updateNotificationPreferences as updateNotificationPreferences };
+export { unsubscribeFromAll as unsubscribeFromAll };
+export { resubscribeToDefaults as resubscribeToDefaults };
+export { getCommunicationHistory as getCommunicationHistory };
+export { sendTestNotification as sendTestNotification };
+export { handleEmailWebhook as handleEmailWebhook };
+export { checkDeliveryStatus as checkDeliveryStatus };

@@ -14,7 +14,7 @@
  * - Vault management
  */
 
-const { createClient } = require('@supabase/supabase-js');
+import { createClient } from '@supabase/supabase-js';
 
 const supabase = createClient(
   process.env.SUPABASE_URL,
@@ -573,7 +573,7 @@ class VoiceCommandProcessor {
 // Export singleton instance
 const voiceCommandProcessor = new VoiceCommandProcessor();
 
-module.exports = {
+export {
   voiceCommandProcessor,
   VoiceCommandProcessor,
   COMMAND_PATTERNS

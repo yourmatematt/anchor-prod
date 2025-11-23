@@ -484,4 +484,4 @@ class MerchantEnrichment {
   }
 }
 
-module.exports = MerchantEnrichment;
+export default MerchantEnrichment;

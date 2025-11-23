@@ -37,7 +37,7 @@ async function sendViaSendGrid(options) {
 
   // TODO: Implement SendGrid integration
   /* Example SendGrid code:
-  const sgMail = require('@sendgrid/mail');
+  import sgMail from '@sendgrid/mail';
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
   const msg = {
@@ -85,7 +85,7 @@ async function sendViaSES(options) {
 
   // TODO: Implement AWS SES integration
   /* Example SES code:
-  const AWS = require('aws-sdk');
+  import AWS from 'aws-sdk';
   const ses = new AWS.SES({
     region: process.env.AWS_REGION
   });
@@ -279,7 +279,18 @@ async function verifyEmail(email) {
   };
 }
 
-module.exports = {
+export {
+  send,
+  sendViaSendGrid,
+  sendViaSES,
+  sendViaConsole,
+  handleSendGridWebhook,
+  handleBounce,
+  handleUnsubscribe,
+  verifyEmail
+};
+
+export default {
   send,
   sendViaSendGrid,
   sendViaSES,

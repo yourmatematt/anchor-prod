@@ -523,4 +523,4 @@ class PatternLearner {
   }
 }
 
-module.exports = PatternLearner;
+export default PatternLearner;

@@ -13,9 +13,9 @@
  * - Multi-turn conversation tracking
  */
 
-const Anthropic = require('@anthropic-ai/sdk');
-const { createClient } = require('@supabase/supabase-js');
-const { VOICE_PROMPTS } = require('../prompts/voice-prompts');
+import Anthropic from '@anthropic-ai/sdk';
+import { createClient } from '@supabase/supabase-js';
+import { VOICE_PROMPTS } from '../prompts/voice-prompts.js';
 
 // Initialize Anthropic client
 const anthropic = new Anthropic({
@@ -497,7 +497,7 @@ Respond in JSON format:
 // Export singleton instance
 const claudeVoiceService = new ClaudeVoiceService();
 
-module.exports = {
+export {
   claudeVoiceService,
   ClaudeVoiceService,
   ConversationContext

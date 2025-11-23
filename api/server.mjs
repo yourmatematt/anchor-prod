@@ -9,8 +9,8 @@ import crypto from 'crypto';
 
 // Import API handlers
 import upBankWebhookHandler from './webhooks/up-bank.js';
-import conversationHandler from './ai/conversation.js';
-import voiceAnalyzeHandler from './voice/analyze.js';
+import conversationHandler from './ai/conversation.mjs';
+import voiceAnalyzeHandler from './voice/analyze.mjs';
 import accountsHandler from './up/accounts.js';
 import transactionsHandler from './up/transactions.js';
 import webhookSetupHandler from './up/webhook-setup.js';
@@ -128,8 +128,9 @@ async function handleRequest(req, res, handler) {
   const parsedUrl = new URL(req.url, `http://${req.headers.host}`);
   req.query = Object.fromEntries(parsedUrl.searchParams);
 
-  // Call handler
-  await handler(req, res);
+  // Call handler (handle both default exports and regular exports)
+  const handlerFunc = handler.default || handler;
+  await handlerFunc(req, res);
 }
 
 /**

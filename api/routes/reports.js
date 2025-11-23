@@ -4,8 +4,8 @@
  * Endpoints for generating and accessing reports
  */
 
-const { createClient } = require('@supabase/supabase-js');
-const ReportGenerator = require('../services/report-generator');
+import { createClient } from '@supabase/supabase-js';
+import ReportGenerator from '../services/report-generator.js';
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -343,7 +343,7 @@ async function updateConsent(req, res) {
 /**
  * Main handler for Vercel serverless function
  */
-module.exports = async (req, res) => {
+export default async; (req, res) => {
   // Enable CORS
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -390,12 +390,12 @@ module.exports = async (req, res) => {
 };
 
 // Export individual functions for testing
-module.exports.generateReport = generateReport;
-module.exports.generateTaxReport = generateTaxReport;
-module.exports.generateCounselorReport = generateCounselorReport;
-module.exports.generateDebtSummary = generateDebtSummary;
-module.exports.listReports = listReports;
-module.exports.downloadReport = downloadReport;
-module.exports.deleteReport = deleteReport;
-module.exports.getConsentStatus = getConsentStatus;
-module.exports.updateConsent = updateConsent;
+export { generateReport as generateReport };
+export { generateTaxReport as generateTaxReport };
+export { generateCounselorReport as generateCounselorReport };
+export { generateDebtSummary as generateDebtSummary };
+export { listReports as listReports };
+export { downloadReport as downloadReport };
+export { deleteReport as deleteReport };
+export { getConsentStatus as getConsentStatus };
+export { updateConsent as updateConsent };

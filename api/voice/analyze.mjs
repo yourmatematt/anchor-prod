@@ -6,7 +6,7 @@
  * Analyzes voice memo transcripts using Claude
  */
 
-import { analyzeTranscript } from '../services/ai-conversation.js';
+import { analyzeTranscript } from '../services/ai-conversation.mjs';
 
 export default async function handler(req, res) {
   // Only allow POST requests

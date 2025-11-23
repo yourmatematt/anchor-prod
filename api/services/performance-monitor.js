@@ -5,7 +5,7 @@
  * Automatically instruments requests, database queries, and external API calls
  */
 
-const metricsCollector = require('./metrics-collector');
+import metricsCollector from './metrics-collector.js';
 
 class PerformanceMonitor {
   /**
@@ -428,4 +428,4 @@ class PerformanceMonitor {
   }
 }
 
-module.exports = PerformanceMonitor;
+export default PerformanceMonitor;

@@ -1,7 +1,7 @@
 # Anchor Backend - Production Dockerfile
 # Optimized for Vercel serverless functions and Railway deployment
 
-FROM node:18-alpine AS base
+FROM node:20-alpine AS base
 
 # Install dependencies only when needed
 FROM base AS deps
@@ -50,7 +50,7 @@ ENV PORT=3000
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
   CMD node -e "require('http').get('http://localhost:3000/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"
 
-CMD ["node", "api/server.js"]
+CMD ["node", "api/server.mjs"]
 
 # Build for Vercel (serverless)
 FROM base AS vercel

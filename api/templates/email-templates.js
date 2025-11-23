@@ -603,7 +603,7 @@ function renderEmail(templateId, data) {
   };
 }
 
-module.exports = {
+export {
   WELCOME_01_LOCKED_IN,
   WELCOME_02_DAY_3,
   WELCOME_03_WEEK_1,

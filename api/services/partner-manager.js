@@ -11,8 +11,8 @@
  * - Support partners (counseling, crisis support, financial counseling)
  */
 
-const { createClient } = require('@supabase/supabase-js');
-const crypto = require('crypto');
+import { createClient } from '@supabase/supabase-js';
+import crypto from 'crypto';
 
 // Initialize Supabase client
 const supabase = createClient(
@@ -444,7 +444,7 @@ class PartnerManager {
 // Export singleton instance
 const partnerManager = new PartnerManager();
 
-module.exports = {
+export {
   partnerManager,
   PartnerManager,
   PARTNER_TYPES,

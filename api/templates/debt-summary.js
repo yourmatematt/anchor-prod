@@ -227,4 +227,4 @@ class DebtSummary {
   }
 }
 
-module.exports = DebtSummary;
+export default DebtSummary;

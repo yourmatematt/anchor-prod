@@ -10,8 +10,8 @@
  * - Identity verification bypass
  */
 
-const auditLogger = require('./audit-logger');
-const crypto = require('crypto');
+import auditLogger from './audit-logger.js';
+import crypto from 'crypto';
 
 // Fraud types
 const FRAUD_TYPE = {
@@ -772,10 +772,6 @@ class FraudDetector {
 
 // Export singleton instance
 const fraudDetector = new FraudDetector();
-module.exports = fraudDetector;
 
-// Export class and constants for testing
-module.exports.FraudDetector = FraudDetector;
-module.exports.FRAUD_TYPE = FRAUD_TYPE;
-module.exports.RISK_SCORE = RISK_SCORE;
-module.exports.THRESHOLDS = THRESHOLDS;
+export default fraudDetector;
+export { FraudDetector, FRAUD_TYPE, RISK_SCORE, THRESHOLDS };

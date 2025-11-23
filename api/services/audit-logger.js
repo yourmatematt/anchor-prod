@@ -11,8 +11,12 @@
  * - System events
  */
 
-const fs = require('fs').promises;
-const path = require('path');
+import { promises as fs } from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Log levels
 const LOG_LEVEL = {
@@ -272,7 +276,7 @@ class AuditLogger {
   }
 }
 
-module.exports = new AuditLogger();
-module.exports.AuditLogger = AuditLogger;
-module.exports.LOG_LEVEL = LOG_LEVEL;
-module.exports.EVENT_CATEGORY = EVENT_CATEGORY;
+const auditLogger = new AuditLogger();
+
+export default auditLogger;
+export { AuditLogger, LOG_LEVEL, EVENT_CATEGORY };

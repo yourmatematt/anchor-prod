@@ -6,7 +6,7 @@
  * Handles conversation requests from mobile app
  */
 
-import { getAIResponse, getStreamingResponse } from '../services/ai-conversation.js';
+import { getAIResponse, getStreamingResponse } from '../services/ai-conversation.mjs';
 
 export default async function handler(req, res) {
   // Only allow POST requests

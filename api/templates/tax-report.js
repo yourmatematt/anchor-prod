@@ -361,7 +361,7 @@ class TaxReport {
    * Generate digital signature
    */
   static _generateSignature(data) {
-    const crypto = require('crypto');
+    import crypto from 'crypto';
 
     const signatureData = {
       userId: data.user.id,
@@ -575,4 +575,4 @@ class TaxReport {
   }
 }
 
-module.exports = TaxReport;
+export default TaxReport;

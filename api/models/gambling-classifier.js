@@ -17,8 +17,12 @@
  *   4. Relapse risk (regression)
  */
 
-const tf = require('@tensorflow/tfjs-node');
-const path = require('path');
+import * as tf from '@tensorflow/tfjs-node';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 class GamblingClassifier {
   constructor() {
@@ -337,7 +341,7 @@ class GamblingClassifier {
     }
 
     try {
-      const fs = require('fs');
+      const { default: fs } = await import('fs');
       const modelDir = path.dirname(this.modelPath);
 
       // Create directory if it doesn't exist
@@ -472,7 +476,7 @@ class GamblingClassifier {
    * Helper: Check if model exists
    */
   async _modelExists() {
-    const fs = require('fs');
+    const { default: fs } = await import('fs');
     const modelFile = `${this.modelPath}/model.json`;
     return fs.existsSync(modelFile);
   }
@@ -499,4 +503,4 @@ class GamblingClassifier {
   }
 }
 
-module.exports = GamblingClassifier;
+export default GamblingClassifier;

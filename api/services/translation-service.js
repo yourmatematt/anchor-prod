@@ -5,13 +5,8 @@
  * Supports: English, Chinese, Vietnamese, Arabic
  */
 
-// Language files
-const translations = {
-  en: require('./locales/en'),
-  zh: require('./locales/zh'),
-  vi: require('./locales/vi'),
-  ar: require('./locales/ar')
-};
+// Language files (initialized below with API locales)
+const translations = {};
 
 class APITranslationService {
   constructor() {
@@ -177,8 +172,9 @@ class APITranslationService {
   }
 }
 
-// Export singleton
-module.exports = new APITranslationService();
+const translationService = new APITranslationService();
+
+export default translationService;
 
 // Stub locale files for API (simplified versions)
 const apiLocales = {

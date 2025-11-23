@@ -4,13 +4,13 @@
  * Endpoints for security administration and monitoring
  */
 
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const securityMonitor = require('../services/security-monitor');
-const fraudDetector = require('../services/fraud-detector');
-const rateLimiter = require('../services/rate-limiter-advanced');
-const auditLogger = require('../services/audit-logger');
-const encryptionService = require('../services/encryption-service');
+import securityMonitor from '../services/security-monitor.js';
+import fraudDetector from '../services/fraud-detector.js';
+import rateLimiter from '../services/rate-limiter-advanced.js';
+import auditLogger from '../services/audit-logger.js';
+import encryptionService from '../services/encryption-service.js';
 
 // Middleware: Admin only
 const requireAdmin = (req, res, next) => {
@@ -296,4 +296,4 @@ router.get('/alerts', requireAdmin, async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

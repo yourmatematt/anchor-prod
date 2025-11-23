@@ -554,4 +554,4 @@ class PatternEvolution {
   }
 }
 
-module.exports = PatternEvolution;
+export default PatternEvolution;

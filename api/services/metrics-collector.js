@@ -5,7 +5,7 @@
  * Tracks: API performance, user behavior, AI metrics, business KPIs
  */
 
-const client = require('prom-client');
+import client from 'prom-client';
 
 class MetricsCollector {
   constructor() {
@@ -620,7 +620,6 @@ class MetricsCollector {
 
 // Export singleton instance
 const metricsCollector = new MetricsCollector();
-module.exports = metricsCollector;
 
-// Export class for testing
-module.exports.MetricsCollector = MetricsCollector;
+export default metricsCollector;
+export { MetricsCollector };

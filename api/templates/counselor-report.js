@@ -1028,4 +1028,4 @@ class CounselorReport {
   }
 }
 
-module.exports = CounselorReport;
+export default CounselorReport;

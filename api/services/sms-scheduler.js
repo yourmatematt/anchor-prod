@@ -9,7 +9,7 @@
  * - Emergency protocol notifications
  */
 
-const CommunicationEngine = require('./communication-engine');
+import CommunicationEngine from './communication-engine.js';
 
 class SMSScheduler {
   constructor(supabaseClient) {
@@ -458,4 +458,4 @@ class SMSScheduler {
   }
 }
 
-module.exports = SMSScheduler;
+export default SMSScheduler;

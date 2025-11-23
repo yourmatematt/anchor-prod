@@ -17,9 +17,9 @@
  *   node analyze-gambling-baseline.js --start=2023-01-01 --end=2024-01-01
  */
 
-const { createClient } = require('@supabase/supabase-js');
-const PatternLearner = require('../services/pattern-learner');
-const MerchantEnrichment = require('../services/merchant-enrichment');
+import { createClient } from '@supabase/supabase-js';
+import PatternLearner from '../services/pattern-learner.js';
+import MerchantEnrichment from '../services/merchant-enrichment.js';
 
 // Configuration
 const SUPABASE_URL = process.env.SUPABASE_URL;
@@ -502,4 +502,4 @@ if (require.main === module) {
   main();
 }
 
-module.exports = GamblingBaselineAnalyzer;
+export default GamblingBaselineAnalyzer;

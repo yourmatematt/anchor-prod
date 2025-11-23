@@ -14,7 +14,7 @@
  * - Issue fuel vouchers
  */
 
-const crypto = require('crypto');
+import crypto from 'crypto';
 
 /**
  * Provider Configurations
@@ -600,7 +600,7 @@ async function getReconciliationReport(accessToken, provider, startDate, endDate
   };
 }
 
-module.exports = {
+export {
   getProviderConfig,
   exchangeOAuthToken,
   refreshOAuthToken,

@@ -277,7 +277,7 @@ function getAllTemplates() {
   };
 }
 
-module.exports = {
+export {
   GUARDIAN_TEMPLATES,
   USER_TEMPLATES,
   SYSTEM_TEMPLATES,

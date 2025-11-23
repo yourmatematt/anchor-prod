@@ -17,9 +17,13 @@
  *   --save-path <path>    Model save path (default: api/data/models/gambling-classifier)
  */
 
-const fs = require('fs');
-const path = require('path');
-const GamblingClassifier = require('../models/gambling-classifier');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+import GamblingClassifier from '../models/gambling-classifier.js';
 
 // Parse command line arguments
 function parseArgs() {
@@ -293,4 +297,9 @@ if (require.main === module) {
   });
 }
 
-module.exports = { main, loadTrainingData, validateData, splitData };
+export {
+  main,
+  loadTrainingData,
+  validateData,
+  splitData
+};

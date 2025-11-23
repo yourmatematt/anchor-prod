@@ -14,8 +14,8 @@
  * - POST /api/webhooks/partners/:partnerId - Partner webhook receiver
  */
 
-const { partnerManager, PARTNER_REGISTRY } = require('../services/partner-manager');
-const { rewardDistributor } = require('../services/reward-distributor');
+import { partnerManager, PARTNER_REGISTRY } from '../services/partner-manager.js';
+import { rewardDistributor } from '../services/reward-distributor.js';
 
 /**
  * Main request handler
@@ -212,7 +212,7 @@ async function linkPartnerAccount(req, res, partnerId) {
     }
 
     // Store link in database
-    const { createClient } = require('@supabase/supabase-js');
+    import { createClient } from '@supabase/supabase-js';
     const supabase = createClient(
       process.env.SUPABASE_URL,
       process.env.SUPABASE_SERVICE_KEY
@@ -289,7 +289,7 @@ async function claimReward(req, res, rewardId) {
   }
 
   try {
-    const { createClient } = require('@supabase/supabase-js');
+    import { createClient } from '@supabase/supabase-js';
     const supabase = createClient(
       process.env.SUPABASE_URL,
       process.env.SUPABASE_SERVICE_KEY
@@ -326,7 +326,7 @@ async function claimReward(req, res, rewardId) {
     }
 
     // Get milestone info
-    const { MILESTONES } = require('../services/reward-distributor');
+    import { MILESTONES } from '../services/reward-distributor.js';
     const milestone = Object.values(MILESTONES).find(m => m.id === reward.milestone_id);
 
     if (!milestone) {

@@ -9,7 +9,7 @@
  * - Distributed rate limiting (Redis-ready)
  */
 
-const Redis = require('ioredis');
+import Redis from 'ioredis';
 
 // Rate limit configurations
 const LIMITS = {
@@ -238,6 +238,8 @@ class AdvancedRateLimiter {
   }
 }
 
-module.exports = new AdvancedRateLimiter();
-module.exports.AdvancedRateLimiter = AdvancedRateLimiter;
-module.exports.LIMITS = LIMITS;
+const advancedRateLimiter = new AdvancedRateLimiter();
+
+export default advancedRateLimiter;
+export { AdvancedRateLimiter as AdvancedRateLimiter };
+export { LIMITS as LIMITS };

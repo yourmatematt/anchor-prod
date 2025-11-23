@@ -4,11 +4,11 @@
  * Endpoints for accessing ML pattern detection, predictions, and insights
  */
 
-const { createClient } = require('@supabase/supabase-js');
-const MLPatternEngine = require('../services/ml-pattern-engine');
-const PatternEvolution = require('../services/pattern-evolution');
-const AnomalyDetector = require('../services/anomaly-detector');
-const GamblingClassifier = require('../models/gambling-classifier');
+import { createClient } from '@supabase/supabase-js';
+import MLPatternEngine from '../services/ml-pattern-engine.js';
+import PatternEvolution from '../services/pattern-evolution.js';
+import AnomalyDetector from '../services/anomaly-detector.js';
+import GamblingClassifier from '../models/gambling-classifier.js';
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -434,7 +434,7 @@ function _categorizeStrength(strength) {
 /**
  * Main handler for Vercel serverless function
  */
-module.exports = async (req, res) => {
+export default async; (req, res) => {
   // Enable CORS
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -481,13 +481,13 @@ module.exports = async (req, res) => {
 };
 
 // Export individual functions for testing
-module.exports.analyzeTransaction = analyzeTransaction;
-module.exports.getUserPatterns = getUserPatterns;
-module.exports.getPatternEvolution = getPatternEvolution;
-module.exports.predictRiskPeriod = predictRiskPeriod;
-module.exports.detectAnomaly = detectAnomaly;
-module.exports.getRecoveryPhase = getRecoveryPhase;
-module.exports.getPatternStrength = getPatternStrength;
-module.exports.getModelInfo = getModelInfo;
-module.exports.trainModel = trainModel;
-module.exports.getDashboard = getDashboard;
+export { analyzeTransaction as analyzeTransaction };
+export { getUserPatterns as getUserPatterns };
+export { getPatternEvolution as getPatternEvolution };
+export { predictRiskPeriod as predictRiskPeriod };
+export { detectAnomaly as detectAnomaly };
+export { getRecoveryPhase as getRecoveryPhase };
+export { getPatternStrength as getPatternStrength };
+export { getModelInfo as getModelInfo };
+export { trainModel as trainModel };
+export { getDashboard as getDashboard };

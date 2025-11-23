@@ -10,7 +10,7 @@
  * - Referrer-Policy
  */
 
-const helmet = require('helmet');
+import helmet from 'helmet';
 
 /**
  * Apply security headers
@@ -111,7 +111,7 @@ function corsConfig() {
   };
 }
 
-module.exports = {
+export {
   securityHeaders,
   customSecurityHeaders,
   corsConfig

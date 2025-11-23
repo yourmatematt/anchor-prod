@@ -5,8 +5,8 @@
  * Tracks: Failed logins, unusual access, injection attempts, session hijacking
  */
 
-const metricsCollector = require('./metrics-collector');
-const auditLogger = require('./audit-logger');
+import metricsCollector from './metrics-collector.js';
+import auditLogger from './audit-logger.js';
 
 // Security event types
 const SECURITY_EVENT = {
@@ -542,10 +542,10 @@ class SecurityMonitor {
 
 // Export singleton instance
 const securityMonitor = new SecurityMonitor();
-module.exports = securityMonitor;
+export default securityMonitor;
 
 // Export class and constants for testing
-module.exports.SecurityMonitor = SecurityMonitor;
-module.exports.SECURITY_EVENT = SECURITY_EVENT;
-module.exports.SEVERITY = SEVERITY;
-module.exports.THRESHOLDS = THRESHOLDS;
+export { SecurityMonitor as SecurityMonitor };
+export { SECURITY_EVENT as SECURITY_EVENT };
+export { SEVERITY as SEVERITY };
+export { THRESHOLDS as THRESHOLDS };

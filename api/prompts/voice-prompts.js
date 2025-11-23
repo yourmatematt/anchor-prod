@@ -193,6 +193,6 @@ Keep it brief and redirect to honest conversation.`,
   }
 };
 
-module.exports = {
+export {
   VOICE_PROMPTS
 };

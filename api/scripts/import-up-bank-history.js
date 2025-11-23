@@ -12,9 +12,9 @@
  *   node import-up-bank-history.js --token=<UP_TOKEN> --start=2022-01-01 --end=2024-01-01
  */
 
-const { createClient } = require('@supabase/supabase-js');
-const PatternLearner = require('../services/pattern-learner');
-const MerchantEnrichment = require('../services/merchant-enrichment');
+import { createClient } from '@supabase/supabase-js';
+import PatternLearner from '../services/pattern-learner.js';
+import MerchantEnrichment from '../services/merchant-enrichment.js';
 
 // Configuration
 const BATCH_SIZE = 100;
@@ -399,4 +399,4 @@ if (require.main === module) {
   main();
 }
 
-module.exports = UpBankHistoryImporter;
+export default UpBankHistoryImporter;

@@ -4,11 +4,11 @@
  * Endpoints for Prometheus scraping and metrics viewing
  */
 
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const metricsCollector = require('../services/metrics-collector');
-const PerformanceMonitor = require('../services/performance-monitor');
-const { Pool } = require('pg');
+import metricsCollector from '../services/metrics-collector.js';
+import PerformanceMonitor from '../services/performance-monitor.js';
+import { Pool } from 'pg';
 
 // Database connection pool for metrics queries
 const pool = new Pool({
@@ -340,4 +340,4 @@ router.get('/reset', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

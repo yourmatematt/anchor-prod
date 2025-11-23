@@ -7,7 +7,7 @@
  * API Integration: Coles Partner API (OAuth2 + REST)
  */
 
-const crypto = require('crypto');
+import crypto from 'crypto';
 
 const COLES_CONFIG = {
   apiBaseUrl: process.env.COLES_API_URL || 'https://api.coles.com.au/partners/v1',
@@ -436,7 +436,7 @@ async function getReconciliationReport(accessToken, startDate, endDate) {
   };
 }
 
-module.exports = {
+export {
   exchangeOAuthToken,
   refreshOAuthToken,
   issueVoucher,

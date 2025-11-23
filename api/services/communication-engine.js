@@ -5,10 +5,10 @@
  * Handles delivery, tracking, preferences, and scheduling
  */
 
-const { renderSMS } = require('../templates/sms-templates');
-const { renderEmail } = require('../templates/email-templates');
-const emailSender = require('./email-sender');
-const { checkPreferences, MANDATORY_NOTIFICATIONS } = require('./notification-preferences');
+import { renderSMS } from '../templates/sms-templates.js';
+import { renderEmail } from '../templates/email-templates.js';
+import emailSender from './email-sender.js';
+import { checkPreferences, MANDATORY_NOTIFICATIONS } from './notification-preferences.js';
 
 class CommunicationEngine {
   constructor(supabaseClient) {
@@ -395,4 +395,4 @@ class CommunicationEngine {
   }
 }
 
-module.exports = CommunicationEngine;
+export default CommunicationEngine;

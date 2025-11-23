@@ -633,4 +633,4 @@ class AnomalyDetector {
   }
 }
 
-module.exports = AnomalyDetector;
+export default AnomalyDetector;

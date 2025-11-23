@@ -277,7 +277,7 @@ async function resubscribeDefaults(userId, supabaseClient) {
   }
 }
 
-module.exports = {
+export {
   MANDATORY_NOTIFICATIONS,
   DEFAULT_PREFERENCES,
   getPreferences,

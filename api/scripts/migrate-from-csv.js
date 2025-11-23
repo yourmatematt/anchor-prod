@@ -16,11 +16,15 @@
  *   node migrate-from-csv.js --file=transactions.csv --format=generic
  */
 
-const { createClient } = require('@supabase/supabase-js');
-const PatternLearner = require('../services/pattern-learner');
-const MerchantEnrichment = require('../services/merchant-enrichment');
-const fs = require('fs');
-const path = require('path');
+import { createClient } from '@supabase/supabase-js';
+import PatternLearner from '../services/pattern-learner.js';
+import MerchantEnrichment from '../services/merchant-enrichment.js';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Configuration
 const SUPABASE_URL = process.env.SUPABASE_URL;
@@ -355,7 +359,7 @@ class CSVMigrator {
    * Generate transaction ID from transaction details
    */
   _generateTransactionId(timestamp, amount, description) {
-    const crypto = require('crypto');
+    import crypto from 'crypto';
     const data = `${timestamp.toISOString()}-${amount}-${description}`;
     return 'csv-' + crypto.createHash('sha256').update(data).digest('hex').substring(0, 32);
   }
@@ -501,4 +505,4 @@ if (require.main === module) {
   main();
 }
 
-module.exports = CSVMigrator;
+export default CSVMigrator;

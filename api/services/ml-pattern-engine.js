@@ -15,10 +15,10 @@
  * - Merchant relationship mapping
  */
 
-const tf = require('@tensorflow/tfjs-node');
-const GamblingClassifier = require('../models/gambling-classifier');
-const PatternEvolution = require('./pattern-evolution');
-const AnomalyDetector = require('./anomaly-detector');
+import tf from '@tensorflow/tfjs-node';
+import GamblingClassifier from '../models/gambling-classifier.js';
+import PatternEvolution from './pattern-evolution.js';
+import AnomalyDetector from './anomaly-detector.js';
 
 class MLPatternEngine {
   constructor(supabaseClient) {
@@ -920,4 +920,4 @@ class MLPatternEngine {
   }
 }
 
-module.exports = MLPatternEngine;
+export default MLPatternEngine;
