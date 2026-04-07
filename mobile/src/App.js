@@ -9,10 +9,22 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
 import { Alert, View, Text, StyleSheet } from 'react-native';
 
-// Screens
+// Main Screens
 import HomeScreen from './screens/HomeScreen';
 import AlertScreen from './screens/AlertScreen';
 import WhitelistScreen from './screens/WhitelistScreen';
+
+// Onboarding Screens
+import WelcomeScreen from './screens/onboarding/WelcomeScreen';
+import CreatorVideoScreen from './screens/onboarding/CreatorVideoScreen';
+import CommitmentScreen from './screens/onboarding/CommitmentScreen';
+import GuardianSetupScreen from './screens/onboarding/GuardianSetupScreen';
+import AIInterviewScreen from './screens/onboarding/AIInterviewScreen';
+import UpBankConnectScreen from './screens/onboarding/UpBankConnectScreen';
+import AccountVerifyScreen from './screens/onboarding/AccountVerifyScreen';
+import WhitelistSetupScreen from './screens/onboarding/WhitelistSetupScreen';
+import FinalLockScreen from './screens/onboarding/FinalLockScreen';
+import OnboardingCompleteScreen from './screens/onboarding/OnboardingCompleteScreen';
 
 // Services
 import { registerForPushNotifications, addNotificationResponseListener } from './services/notifications';
@@ -22,7 +34,7 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [isReady, setIsReady] = useState(false);
-  const [hasToken, setHasToken] = useState(false);
+  const [hasCompletedOnboarding, setHasCompletedOnboarding] = useState(false);
 
   useEffect(() => {
     initializeApp();
@@ -30,9 +42,11 @@ export default function App() {
 
   async function initializeApp() {
     try {
-      // Check if Up Bank token exists
-      const tokenExists = await tokenService.hasToken();
-      setHasToken(tokenExists);
+      // Check if onboarding has been completed
+      // TODO: Check AsyncStorage or Supabase for onboarding completion
+      // For now, assume onboarding not completed to test flow
+      const onboardingComplete = false; // await checkOnboardingStatus();
+      setHasCompletedOnboarding(onboardingComplete);
 
       // Register for push notifications
       try {
@@ -81,9 +95,56 @@ export default function App() {
           screenOptions={{
             headerShown: false,
             contentStyle: { backgroundColor: '#000' },
-            animation: 'slide_from_bottom'
+            animation: 'slide_from_right'
           }}
+          initialRouteName={hasCompletedOnboarding ? 'Home' : 'Welcome'}
         >
+          {/* Onboarding Flow */}
+          <Stack.Screen
+            name="Welcome"
+            component={WelcomeScreen}
+            options={{ gestureEnabled: false }}
+          />
+          <Stack.Screen
+            name="CreatorVideo"
+            component={CreatorVideoScreen}
+          />
+          <Stack.Screen
+            name="Commitment"
+            component={CommitmentScreen}
+          />
+          <Stack.Screen
+            name="GuardianSetup"
+            component={GuardianSetupScreen}
+          />
+          <Stack.Screen
+            name="AIInterview"
+            component={AIInterviewScreen}
+          />
+          <Stack.Screen
+            name="UpBankConnect"
+            component={UpBankConnectScreen}
+          />
+          <Stack.Screen
+            name="AccountVerify"
+            component={AccountVerifyScreen}
+          />
+          <Stack.Screen
+            name="WhitelistSetup"
+            component={WhitelistSetupScreen}
+          />
+          <Stack.Screen
+            name="FinalLock"
+            component={FinalLockScreen}
+            options={{ gestureEnabled: false }}
+          />
+          <Stack.Screen
+            name="OnboardingComplete"
+            component={OnboardingCompleteScreen}
+            options={{ gestureEnabled: false }}
+          />
+
+          {/* Main App Flow */}
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen
             name="Alert"

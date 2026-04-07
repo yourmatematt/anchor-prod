@@ -6,7 +6,7 @@
  */
 
 import Anthropic from '@anthropic-ai/sdk';
-import { getInterventionPrompt } from '../prompts/intervention-prompts.mjs';
+import { getInterventionPrompt } from './intervention-prompts.mjs';
 
 const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
@@ -77,61 +77,6 @@ export async function getAIResponse({
 
     // Fallback response if API fails
     return getFallbackResponse(trigger);
-  }
-}
-
-/**
- * Get streaming AI response with proper event handling
- *
- * @param {Object} params - Same as getAIResponse
- * @param {Function} onChunk - Callback for each text chunk
- * @param {Function} onComplete - Callback when stream completes
- * @param {Function} onError - Callback for errors
- */
-export async function getStreamingResponse({
-  messages,
-  trigger,
-  userData
-}, onChunk, onComplete, onError) {
-  try {
-    const systemPrompt = getInterventionPrompt(trigger, userData);
-    const model = process.env.CLAUDE_MODEL || 'claude-3-opus-20240229';
-
-    const stream = await anthropic.messages.stream({
-      model,
-      max_tokens: 200,
-      temperature: 0.7,
-      system: systemPrompt,
-      messages: messages.length > 0 ? messages : [
-        {
-          role: 'user',
-          content: 'I need to talk about what just happened.'
-        }
-      ]
-    });
-
-    let fullText = '';
-
-    // Handle streaming events
-    stream.on('text', (text) => {
-      fullText += text;
-      if (onChunk) onChunk(text);
-    });
-
-    stream.on('end', () => {
-      if (onComplete) onComplete(fullText);
-    });
-
-    stream.on('error', (error) => {
-      console.error('Streaming error:', error);
-      if (onError) onError(error);
-    });
-
-    return stream;
-  } catch (error) {
-    console.error('Claude streaming error:', error);
-    if (onError) onError(error);
-    throw error;
   }
 }
 
@@ -246,7 +191,6 @@ export function formatMessageHistory(rawMessages) {
 
 export default {
   getAIResponse,
-  getStreamingResponse,
   analyzeTranscript,
   formatMessageHistory,
   TriggerType

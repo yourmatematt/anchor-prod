@@ -1,35 +1,13 @@
 {
   "version": 2,
-  "name": "anchor",
-  "builds": [
-    {
-      "src": "api/**/*.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/health",
-      "dest": "/api/health.js"
-    },
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
-    }
-  ],
-  "env": {
-    "SUPABASE_URL": "@supabase-url",
-    "SUPABASE_ANON_KEY": "@supabase-anon-key",
-    "SUPABASE_SERVICE_KEY": "@supabase-service-key",
-    "ANTHROPIC_API_KEY": "@anthropic-api-key",
-    "CLAUDE_MODEL": "@claude-model",
-    "UP_WEBHOOK_SECRET": "@up-webhook-secret"
-  },
+  "regions": ["syd1"],
   "functions": {
-    "api/**/*.js": {
+    "api/index.js": {
       "memory": 1024,
-      "maxDuration": 10
+      "maxDuration": 30
     }
   },
-  "regions": ["syd1"]
+  "routes": [
+    { "src": "/(.*)", "dest": "/api/index.js" }
+  ]
 }

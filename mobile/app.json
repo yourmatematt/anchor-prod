@@ -37,6 +37,11 @@
           "color": "#ff0000"
         }
       ]
-    ]
+    ],
+    "extra": {
+      "EXPO_PUBLIC_API_URL": "https://anchor-prod-drab.vercel.app",
+      "EXPO_PUBLIC_SUPABASE_URL": "https://plgwjwckshavoxtxhzwf.supabase.co",
+      "EXPO_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBsZ3dqd2Nrc2hhdm94dHhoendmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI4NTQwMjksImV4cCI6MjA3ODQzMDAyOX0.qbCC5jOeT2wEMH9U2I4MPpTu92L6PCyIl-3IIx5qID4"
+    }
   }
 }
